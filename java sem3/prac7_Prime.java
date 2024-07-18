@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Prime1
+public class prac7_Prime
 {
     public static boolean isPrime(int n)
     {
