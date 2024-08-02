@@ -1,68 +1,124 @@
 #include <stdio.h>
-//#include <stdlib.h>
+#define MAX 100
 
-int MAX=10;
+typedef struct Stack{
+  int item[MAX];
+  int top;
+}Stack;
 
-int top = -1;
-int stack[10];
-
-void push(int value)
+void creation(Stack *s)
 {
-    if (top >= MAX - 1)
+  s->top=-1;
+}
+
+int isFull(Stack *s)
+{
+  return s->top==(MAX-1);
+}
+
+int isEmpty(Stack *s)
+{
+  return s->top==-1;
+}
+
+void push(Stack* s , int Item)
+{
+  if(isFull(&s))
+  {
+    puts("Stack is full...");
+  }
+  else
+  {
+    s->top++;
+    s->item[s->top]=Item;
+    printf("Item %d push to the stack\n",Item);
+  }
+}
+
+void pop(Stack* s)
+{ int item;
+  if(isEmpty(&s))
+  {
+    puts("Stack is Empty.......");
+  }
+  else 
+  {
+    item=s->item[s->top];
+    s->top--;
+    printf("Item %d pop from the stack\n",item);
+  }
+}
+
+void peek(Stack *s)
+{
+  if(s->top==-1)
+  {
+    puts("No top Item Stack is Empty......");
+  }
+  else
+  {
+    printf("Top Item: %d\n",s->item[s->top]);
+  }
+}
+
+void search(Stack *s,int key)
+{
+
+  printf("Searching %d in Stack: \n",key);
+  if(isEmpty(&s))
+  {
+    puts("Stack is Empty....");
+    return;
+  }
+  else
+  {
+    for(int i=0;i<=s->top;i++)
     {
-        printf("Stack Overflow\n");
+      if(s->item[i]==key)
+      {
+        printf("Item %d found at index: %d\n",key,i);
         return;
+      }
     }
-    top++;
-    stack[top] = value;
-    printf("%d pushed into stack\n", value);
+    puts("Item not found....");
+    return;
+  }
 }
 
-int pop()
+void travel(Stack *s)
 {
-    if (top < 0)
+  
+  if(isEmpty(&s))
+  {
+    puts("Stack is Empty....\n");
+  }
+  else
+  {
+    puts("Stack items:");
+    for(int i=s->top;i>=0;i--)
     {
-        printf("Stack Underflow\n");
-        return 0;
-    }
-    int val=stack[top];
-    top--;
-    return val;
-}
-
-int peek()
-{
-    if (top < 0)
-    {
-        printf("Stack is Empty\n");
-        return 0;
-    }
-    return stack[top];
-}
-
-void traverse()
-{
-    if (top < 0)
-    {
-        printf("Stack is Empty\n");
-        return;
-    }
-    printf("Stack elements are: ");
-    for (int i = top; i >= 0; i--)
-    {
-        printf("%d ", stack[i]);
-    }
-    printf("\n");
+      printf("%d \n",s->item[i]);
+    } 
+  }  
 }
 
 int main()
 {
-    push(10);
-    push(20);
-    push(30);
-    push(35);
-    printf("%d popped from stack\n", pop());
-    printf("Top element is :%d\n", peek());
-    traverse();
-    return 0;
+  Stack s;
+  creation(&s);
+  
+  push(&s,10);
+  push(&s,20);
+  push(&s,30);
+  
+  travel(&s);
+  
+  pop(&s);
+  //pop(&s);
+  //pop(&s);
+  
+  search(&s,20);
+  
+  peek(&s);
+    
 }
