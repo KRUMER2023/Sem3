@@ -10,7 +10,7 @@ class Employee {
     public Employee(String name, int age, int Emp_ID, double salary) {
         this.name = name;
         this.age = age;
-        this.Emp_ID = Emp_ID;
+        this.Emp_ID = Emp_ID;  
         this.salary = salary;
     }
 
@@ -28,7 +28,7 @@ public class prac4_Employee
 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        
         // Reading employee details
         System.out.println("Enter employee name: ");
         String name = scanner.nextLine();
@@ -44,7 +44,7 @@ public class prac4_Employee
         double salary = scanner.nextDouble();
 
         // Creating an employee object
-        Employee employee = new Employee(name, age, EMP_ID, salary);
+        Project_Em employee = new Project_Em(name, age, EMP_ID, salary);
 
         // Displaying employee details
         employee.displayDetails();

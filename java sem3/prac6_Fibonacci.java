@@ -1,12 +1,12 @@
 public class prac6_Fibonacci {
-    public static int fibonacciRecursive(int n) {
+    public static int fRec(int n) {
         if (n <= 1) {
             return n;
         }
-        return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+        return fRec(n - 1) + fRec(n - 2);
     }
 
-    public static int fibonacciNonRecursive(int n) {
+    public static int fNRec(int n) {
         if (n <= 1) {
             return n;
         }
@@ -21,11 +21,11 @@ public class prac6_Fibonacci {
 
     public static void main(String[] args) {
         int n = 10; 
-
-        int resultRecursive = fibonacciRecursive(n);
+        
+        int resultRecursive = fRec(n);
         System.out.println("Fibonacci number at position " + n + " (recursive): " + resultRecursive);
 
-        int resultNonRecursive = fibonacciNonRecursive(n);
+        int resultNonRecursive = fNRec(n);
         System.out.println("Fibonacci number at position " + n + " (non-recursive): " + resultNonRecursive);
     }
 }

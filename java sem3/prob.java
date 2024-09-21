@@ -20,6 +20,7 @@ public class prob {
             feh=temp*(9/5)+32;
             System.out.println("tem. in feh : "+feh);
         }
+        sc.close();
         
         
     }

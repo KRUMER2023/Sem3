@@ -1,16 +1,16 @@
 
-
 public class prob5 {
     public static void main(String[] args) {
-        
-        String a[]={"arya","manish","aditya","parshwa","anish","krunal"};
-        for(int i=0;i<a.length;i++)
-        {
-            if(a[i].startsWith(String.valueOf('a')))
+
+        String a = "arya";
+
+        for (int i = 0; i < 5; i++) {
+            // System.out.println(a[i]);
+            if(a.startsWith(String.valueOf('a')))
             {
-                System.out.println(a[i]);
+            System.out.println(a);
             }
         }
     }
-    
+
 }

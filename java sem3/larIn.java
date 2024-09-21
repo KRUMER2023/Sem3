@@ -15,7 +15,7 @@ public class larIn {
             }
 
         }
-
+        sc.close();
         System.out.println("largest:" + lar);
     }
 

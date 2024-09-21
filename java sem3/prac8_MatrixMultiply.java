@@ -16,6 +16,7 @@ public class prac8_MatrixMultiply {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         int [][]m1=new int [3][3];
         int [][]m2=new int [3][3]; 
         int [][]res=new int [3][3];

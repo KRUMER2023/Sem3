@@ -58,7 +58,7 @@ public class prac3_Cali {
         int a,b;
         Scanner n=new Scanner(System.in);
         prac3_Cali d= new prac3_Cali();
-
+        
         System.out.println("Enter the a:");
         a=n.nextInt();
         System.out.println("Enter the b:");

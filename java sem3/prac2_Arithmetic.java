@@ -5,6 +5,7 @@ public class prac2_Arithmetic{
     public static void main(String [] args){
         Scanner n=new Scanner(System.in);
         int a,b,c;
+        
         System.out.println("ENTER 1ST NUMBER:-");
         a=n.nextInt();
         System.out.println("ENTER 2ST NUMBER:-");
