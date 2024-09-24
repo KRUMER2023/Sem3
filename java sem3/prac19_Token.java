@@ -1,5 +1,4 @@
-
-// write a program to read the line of no. and display sum 
+// write a program to read the line of no. and display sum
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -10,7 +9,7 @@ public class prac19_Token {
         String text=scanner.nextLine();
         scanner.close();
         StringTokenizer s = new StringTokenizer(text);// 1 para. cons.
-        int sum=0;
+        int sum=0; 
         
         System.out.println("\nAdding:");
         while (s.hasMoreTokens()) {
