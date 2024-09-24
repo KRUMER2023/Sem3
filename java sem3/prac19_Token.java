@@ -6,24 +6,19 @@ import java.util.StringTokenizer;
 public class prac19_Token {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a line on integer (include space between each integer) :");
         String text=scanner.nextLine();
         scanner.close();
         StringTokenizer s = new StringTokenizer(text);// 1 para. cons.
-        int odd=0;
-        int even=0;
+        int sum=0;
         
+        System.out.println("\nAdding:");
         while (s.hasMoreTokens()) {
-            String token = s.nextToken();
-            if(Integer.parseInt(token)%2==0)
-            {
-                even++;
-            }
-            else
-            {
-                odd++;
-            }
+            int no = Integer.parseInt(s.nextToken());
+            System.out.println(no);
+            sum+=no;
             
         }
-        System.out.println("No. of odd:"+odd+"\nNO. of even:"+even);
+        System.out.println("\nSum: "+sum);
     }
 }
