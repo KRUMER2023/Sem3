@@ -4,12 +4,13 @@ public class prac17 {
     public static void main(String[] args) {
         // Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter a text:");
+        
         String text = """
                 he is a good boy 
                 he is also want good marks
                 """;
 
+        System.out.println("Scanning Text:\n"+text);
         int charCount = 0;
         int lineCount = 0;
         int wordCount = 0;
