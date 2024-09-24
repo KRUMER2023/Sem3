@@ -1,5 +1,5 @@
 
-// write a program to read the line of no. and count the odd and even 
+// write a program to read the line of no. and display sum 
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
