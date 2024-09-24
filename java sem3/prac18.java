@@ -1,6 +1,6 @@
 public class prac18 {
     public static void main(String[] args) {
-        System.out.println(isPalindrome("MADAM"));
+        System.out.println("'MADAM' is Plaidrome ? :"+isPalindrome("MADAM"));
     }
 
     
