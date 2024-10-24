@@ -1,85 +1,107 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct Queue
-{
-    int front ,rear, size;
-    unsigned capacity;
-    int *array;
+#define MAX 5  // Maximum size of the queue
+
+// Queue structure
+struct Queue {
+    int items[MAX];
+    int front;
+    int rear;
 };
 
-struct Queue* createQueue(unsigned capacity)
-{
-    struct Queue * queue=(struct Queue*)malloc(sizeof(struct Queue));
-    queue->capacity=capacity;
-    queue->front = 0;
-    queue->size=0;
-    queue->rear=capacity-1;
-    queue->array = (int*)malloc(queue->capacity * sizeof(int));
-    return queue;
-};
-
-int isFull(struct Queue* queue)
-{
-    return (queue->size==queue->capacity);
+// Function to create an empty queue
+void initializeQueue(struct Queue* q) {
+    q->front = -1;
+    q->rear = -1;
 }
 
-int isEmpty(struct Queue* queue)
-{
-    return(queue->size==0);
+// Function to check if the queue is full
+int isFull(struct Queue* q) {
+    if (q->rear == MAX - 1) {
+        return 1;
+    }
+    return 0;
 }
 
-void enqueue(struct Queue* queue,int item)
-{
-    if(isFull(queue))
+// Function to check if the queue is empty
+int isEmpty(struct Queue* q) {
+    if (q->front == -1 || q->front > q->rear) {
+        return 1;
+    }
+    return 0;
+}
+
+// Function to add an element to the queue (enqueue)
+void enqueue(struct Queue* q, int value) {
+    if (isFull(q)) {
+        printf("Queue is full! Cannot enqueue %d\n", value);
         return;
-
-    queue->rear=(queue->rear+1)%queue->capacity;
-    queue->array[queue->rear]=item;
-    queue->size=queue->size+1;
-    printf("%d enqueued to queue\n",item);
+    }
+    if (q->front == -1) {
+        q->front = 0;  // Set front to 0 if the queue was previously empty
+    }
+    q->rear++;
+    q->items[q->rear] = value;
+    printf("Enqueued %d\n", value);
 }
 
-int dequeue(struct Queue* queue)
-{
-    if(isEmpty(queue))
-        return;
+// Function to remove an element from the queue (dequeue)
+int dequeue(struct Queue* q) {
+    if (isEmpty(q)) {
+        printf("Queue is empty! Cannot dequeue.\n");
+        return -1;
+    }
+    int dequeuedItem = q->items[q->front];
+    q->front++;
 
-    int item=queue->array[queue->front];
+    // Reset front and rear if the queue becomes empty
+    if (q->front > q->rear) {
+        q->front = -1;
+        q->rear = -1;
+    }
 
-    queue->front=(queue->front+1)%queue->capacity;
-    queue->size=queue->size-1;
-    return item;
+    return dequeuedItem;
 }
 
-int front(struct Queue* queue)
-{
-    if(isEmpty(queue))
-        return INT_MIN;
-
-    return queue->array[queue->front];
+// Function to get the element at the front of the queue
+int front(struct Queue* q) {
+    if (isEmpty(q)) {
+        printf("Queue is empty!\n");
+        return -1;
+    }
+    return q->items[q->front];
 }
 
-int rear(struct Queue* queue)
-{
-    if(isEmpty(queue))
-        return INT_MIN;
-
-    return queue->array[queue->rear];
+// Function to get the element at the rear of the queue
+int rear(struct Queue* q) {
+    if (isEmpty(q)) {
+        printf("Queue is empty!\n");
+        return -1;
+    }
+    return q->items[q->rear];
 }
 
-int main()
-{
-    struct Queue* queue=createQueue(1000);
-    enqueue(queue,1);
-    enqueue(queue,2);
-    enqueue(queue,3);
-    enqueue(queue,4);
+// Main function to demonstrate the queue operations
+int main() {
+    struct Queue q;
+    initializeQueue(&q);
 
-    printf("%d dequeued from queue\n\n",dequeue(queue));
+    enqueue(&q, 10);
+    enqueue(&q, 20);
+    enqueue(&q, 30);
+    enqueue(&q, 40);
+    enqueue(&q, 50);
+    enqueue(&q, 60);  // This should trigger the "Queue is full" message
 
-    printf("Front item id %d \n",front(queue));
-    printf("rear item id %d \n",rear(queue));
+    printf("Front element: %d\n", front(&q));
+    printf("Rear element: %d\n", rear(&q));
+
+    printf("Dequeued element: %d\n", dequeue(&q));
+    printf("Dequeued element: %d\n", dequeue(&q));
+
+    printf("Front element: %d\n", front(&q));
+    printf("Rear element: %d\n", rear(&q));
+
     return 0;
 }

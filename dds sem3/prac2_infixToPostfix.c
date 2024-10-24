@@ -18,10 +18,15 @@ int isEmpty(Stack *s)
 {
     return s->top == -1;
 }
+
+int isFull(Stack *s)
+{
+    return s->top==MAX -1;
+}
 // Function to push an element onto the stack
 void push(Stack *s, char item)
 {
-    if (s->top == MAX - 1)
+    if (isFull(s))
     {
         printf("Stack overflow\n");
         exit(1);
